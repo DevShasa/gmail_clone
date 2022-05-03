@@ -1,3 +1,53 @@
 .sidebarOption{
-    
+    display: flex;
+    align-items: center;
+    height: 31px;
+    padding: 0 10px;
+    cursor:pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color:#202020;
+}
+
+/* These styles should appear on hover 
+These styles should also appear if selected = true */
+.sidebarOption:hover,
+.sidebarOption:hover > p,
+.sidebarOption:hover > h3,
+.sideBarOption--active, 
+.sideBarOption--active > p,
+.sideBarOption--active > h3{
+    background-color: #ffdddd;
+    color: red;
+    font-weight: 800 !important;
+}
+
+.sidebarOption> h3{
+    flex: 1;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sidebarOption> p{
+    display: none;
+    font-weight: 300 !important;
+    font-size: 13px !important;
+}
+
+.sideBarOption--active> p{
+    display: inline !important;
+}
+
+.sidebarOption:hover >p{
+    display: inline;
+}
+.sidebarOption > .MuiSvgIcon-root{
+    padding: 2px;
+}
+
+@media only screen and (max-width:500px){
+    .sidebarOption > .MuiSvgIcon-root{
+        display: none;
+    }
 }
