@@ -2,11 +2,16 @@ import React from 'react';
 import "./EmailRow.css";
 import { IconButton, Checkbox } from "@mui/material";
 import { LabelImportantOutlined, StarBorderOutlined} from "@mui/icons-material"
+import { useNavigate } from "react-router-dom";
+
 
 function EmailRow({ id, title, subject, description, time }) {
 
+    let navigate = useNavigate();
+
     const openMail = () =>{
-        console.log("The Mail has been opened")
+        // navigate("/mail?next=wolan&shata=shatade") navigate to mail with search params
+        navigate("/mail")
     }
 
     return (
