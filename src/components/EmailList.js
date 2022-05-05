@@ -10,10 +10,12 @@ import {
     ChevronRight , 
     KeyboardHide, 
     Inbox,
-    SupervisorAccount,
-    LocalOffer
+    PeopleAltOutlined,
+    LocalOfferOutlined
 } from '@mui/icons-material';
 import Section from "./Section";
+import EmailRow from "./EmailRow";
+
 
 function EmailList() {
     return (
@@ -35,9 +37,23 @@ function EmailList() {
 
             <div className="emailList__sections">
                 <Section Icon = {Inbox} title="Primary" color="red" selected />
-                <Section Icon = {SupervisorAccount} title="Social" color="#1A73E8"  />
-                <Section Icon = {LocalOffer} title="Promotions" color="green" />
+                <Section Icon = {PeopleAltOutlined} title="Social" color="#1A73E8"  />
+                <Section Icon = {LocalOfferOutlined} title="Promotions" color="green" />
+            </div>
 
+            <div className="emailList__list">
+                <EmailRow 
+                    title="Google" 
+                    subject="Regarding the Gmail clone"
+                    description="Please dont put us out of business"
+                    time="10pm"
+                />
+                <EmailRow 
+                    title="Playstation 5 now in store" 
+                    subject="Grab the latest playstation now"
+                    description="Fresh restock of the latest playstation"
+                    time="2pm"
+                />
             </div>
         </div>
     )
