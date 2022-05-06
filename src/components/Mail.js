@@ -16,7 +16,6 @@ import {
     ReportGmailerrorredOutlined,
     ArrowBackIosOutlined,
     ArrowForwardIosOutlined,
-    LabelImportant,
     LocalPrintshop,
     Launch,
 }from "@mui/icons-material"
@@ -55,24 +54,28 @@ function Mail() {
             </div>
 
             <div className="mail__body">
-                <div className="mail__bodyHeader">
-                    <div className="mail__subject">
-                        <div className="mail__subjectInner">
-                            <div className="inner-1">
-                                <h2>Email Subject Goes here</h2>
-                                <span>Inbox &#10006;</span>
-                            </div>
-                            <div className="inner-2">
-                                <LocalPrintshop/>
-                                <Launch />
+                <div className="mail__content">
+                        <div className="mail__bodyHeader">
+                            <div className="mail__subject">
+                                <div className="mail__subjectInner">
+                                    <div className="inner-1">
+                                        <h2>Email Subject Goes here</h2>
+                                        <span>Inbox &#10006;</span>
+                                    </div>
+                                    <div className="inner-2">
+                                        <LocalPrintshop/>
+                                        <Launch />
+                                    </div>
+                                </div>
+                                <div className="mail__titleTime">
+                                    <p>Title of selected email</p>
+                                    <p className="mail__time">Mail time: 4:20pm</p>
+                                </div>
                             </div>
                         </div>
-                        <p>Title of selected email</p>
-                        <p className="mail__time">Mail time: 4:20pm</p>
-                    </div>
-                </div>
-                <div className="mail__message">
-                    <p>The content of the email goes in here</p>
+                        <div className="mail__message">
+                            <p>The content of the email goes in here</p>
+                        </div>
                 </div>  
             </div>
         </div>

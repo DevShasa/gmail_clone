@@ -15,6 +15,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import DuoIcon from '@mui/icons-material/Duo';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useDispatch } from "react-redux";
+import { openSendMessage } from "../redux/mailSlice";
 
 function Sidebar() {
 
@@ -24,7 +25,7 @@ function Sidebar() {
         <div className="sidebar">
             <Button
                 className="sidebar__compose"
-                onClick = {console.log("COmposed!")}
+                onClick = {()=> dispatch(openSendMessage())}
                 startIcon = { <CreateOutlinedIcon fontSize='large'/> }
                 disableRipple = {true}
             >

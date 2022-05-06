@@ -43,13 +43,13 @@ function EmailList() {
 
             <div className="emailList__list">
                 <EmailRow 
-                    title="Google" 
+                    sender_title="Google" 
                     subject="Regarding the Gmail clone"
                     description="Please dont put us out of business"
                     time="10pm"
                 />
                 <EmailRow 
-                    title="Playstation 5 now in store" 
+                    sender_title="Playstation" 
                     subject="Grab the latest playstation now"
                     description="Fresh restock of the latest playstation"
                     time="2pm"

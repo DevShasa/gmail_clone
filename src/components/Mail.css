@@ -6,6 +6,8 @@
     justify-content: space-between;
     background-color: white;
     border-bottom: 2px solid rgb(238, 238, 238);
+    position: sticky;
+    top: 0;
 }
 .mail__toolsLeft{
     display:flex;
@@ -22,6 +24,16 @@
     flex-direction: column;
     margin: 30px;
     height:90vh;
+    padding: 30px;
+    background-color:rgb(243, 243, 243);
+}
+.mail__content{
+    background-color: white;
+    height: 97%;
+    padding: 30px;
+    border-radius: 3px;
+    box-shadow: -4px 5px 27px -11px rgba(0,0,0,0.55);
+
 }
 .mail__subjectInner{
     display: flex;
@@ -45,4 +57,16 @@
     font-size: small;
     color: rgb(63, 63, 63);
     cursor: pointer;
+}
+.mail__titleTime{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid whitesmoke;
+}
+.err{
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(255, 219, 219);
 }
