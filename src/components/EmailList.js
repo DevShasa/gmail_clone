@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./EmailList.css"
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
@@ -15,9 +15,43 @@ import {
 } from '@mui/icons-material';
 import Section from "./Section";
 import EmailRow from "./EmailRow";
-
+import { db } from "../firebase/firebase"
+import { 
+    collection, 
+    // getDocs, 
+    onSnapshot, 
+    orderBy, 
+    query 
+} from "firebase/firestore";
 
 function EmailList() {
+
+    const [emails, setEmails] = useState([])
+
+
+    useEffect(()=>{
+        // const fetchData = async()=>{
+        //     const emails = collection(db, "emails");
+        //     const emailSnapshot = await getDocs(emails)
+        //     // const emailList = emailSnapshot.docs.map(doc=> doc.data())
+        //     // console.log(emailList)
+        //     setEmails(emailSnapshot.docs.map(doc =>(
+        //         { id: doc.id, data: doc.data() }
+        //     )))
+        // }
+
+        const q = query(collection(db, "emails"), orderBy('timestamp', 'desc'));
+        onSnapshot(q, (querySnapshot)=>{
+            setEmails(querySnapshot.docs.map(doc=>(
+                { id: doc.id, data: doc.data() }
+            )))
+        })
+        
+    },[])
+
+    
+    console.log(emails)
+
     return (
         <div className="emailList">
             <div className="emailList__settings">

@@ -19,6 +19,7 @@ function SendMail() {
         //     message: formData.message,
         //     timestamp: 
         // })
+        dispatch(closeSendMessage());
         const docRef = await addDoc(collection(db, "emails"), {
                     to: formData.to,
                     subject: formData.subject,
@@ -26,7 +27,7 @@ function SendMail() {
                     timestamp: serverTimestamp()
         });
         console.log("the new document is", docRef.id)
-        dispatch(closeSendMessage());
+        
 
     }
 
