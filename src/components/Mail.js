@@ -19,6 +19,8 @@ import {
     LocalPrintshop,
     Launch,
 }from "@mui/icons-material"
+import { useSelector } from "react-redux";
+
 
 function Mail() {
     // let [searchParams, setSearchParams] = useSearchParams();
@@ -27,6 +29,7 @@ function Mail() {
     // console.log(next)
     // console.log(shata)
 
+    const { selectedMail } = useSelector(state => state.mail)
     const navigate = useNavigate()
 
     return (
@@ -59,7 +62,7 @@ function Mail() {
                             <div className="mail__subject">
                                 <div className="mail__subjectInner">
                                     <div className="inner-1">
-                                        <h2>Email Subject Goes here</h2>
+                                        <h2>{selectedMail?.subject}</h2>
                                         <span>Inbox &#10006;</span>
                                     </div>
                                     <div className="inner-2">
@@ -68,13 +71,13 @@ function Mail() {
                                     </div>
                                 </div>
                                 <div className="mail__titleTime">
-                                    <p>Title of selected email</p>
-                                    <p className="mail__time">Mail time: 4:20pm</p>
+                                    <p>{selectedMail?.sender_title}</p>
+                                    <p className="mail__time">{selectedMail?.time}</p>
                                 </div>
                             </div>
                         </div>
                         <div className="mail__message">
-                            <p>The content of the email goes in here</p>
+                            <p>{selectedMail?.description}</p>
                         </div>
                 </div>  
             </div>

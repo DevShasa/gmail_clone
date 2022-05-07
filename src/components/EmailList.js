@@ -23,11 +23,13 @@ import {
     orderBy, 
     query 
 } from "firebase/firestore";
+import Stack from '@mui/material/Stack';
+import LinearProgress from '@mui/material/LinearProgress';
 
 function EmailList() {
 
     const [emails, setEmails] = useState([])
-
+    const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
         // const fetchData = async()=>{
@@ -45,12 +47,10 @@ function EmailList() {
             setEmails(querySnapshot.docs.map(doc=>(
                 { id: doc.id, data: doc.data() }
             )))
+            setLoading(false)
         })
         
     },[])
-
-    
-    console.log(emails)
 
     return (
         <div className="emailList">
@@ -76,18 +76,29 @@ function EmailList() {
             </div>
 
             <div className="emailList__list">
-                <EmailRow 
-                    sender_title="Google" 
-                    subject="Regarding the Gmail clone"
-                    description="Please dont put us out of business"
-                    time="10pm"
-                />
-                <EmailRow 
-                    sender_title="Playstation" 
-                    subject="Grab the latest playstation now"
-                    description="Fresh restock of the latest playstation"
-                    time="2pm"
-                />
+                { loading 
+                ? (
+                    <Stack sx={{ width: '100%', color: 'red', marginTop: '20px'}} spacing={2}>
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="inherit" />
+                    </Stack>)
+                :(
+                    <div>
+                        {emails.map(mail=>(
+                            <EmailRow 
+                                id={mail.id}
+                                key={mail.id}
+                                subject = {mail.data.subject}
+                                description={mail.data.message}
+                                time = {new Date(mail.data.timestamp?.seconds * 1000).toUTCString()}
+                                sender_title = {mail.data.to}
+                            />
+                        ))}
+                    </div>)
+                }
+
+
             </div>
         </div>
     )
