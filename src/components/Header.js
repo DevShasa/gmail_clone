@@ -8,8 +8,25 @@ import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import Avatar from '@mui/material/Avatar';
+import { useSelector, useDispatch } from "react-redux";
+import { auth, signOut } from "../firebase/firebase";
+import { logout } from "../redux/userSlice"; 
+
 
 function Header() {
+
+    const dispatch = useDispatch()
+    const { user } = useSelector(state=> state.userState)
+
+    const logMeOut = ()=>{
+
+        signOut(auth).then(()=>{
+            dispatch(logout())
+        }).catch((error)=>{
+            console.log("LOGOUT ERROR>>", error)
+        })
+    }
+
     return (
         <div className="header">
             <div className="header__left">
@@ -38,19 +55,15 @@ function Header() {
                     <AppsOutlinedIcon />
                 </IconButton>
                 <Avatar 
-                    sx={{width: 30, height: 30}}
-                />
+                    sx={{width: 30, height: 30, cursor:'pointer'}}
+                    src={user?.photoUrl}
+                    onClick = {logMeOut}
+                >
+                    {user?.email[0].toUpperCase()}
+                </Avatar>
             </div>
         </div>
     );
 }
 
 export default Header
-
-/*
-    - connnect auth 
-    - connect redux and selectors
-    - make avatar display url 
-    -add signout function 
-    - attach signout function to avatar onclick
-*/ 
